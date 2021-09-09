@@ -17,8 +17,8 @@ namespace CvBuilder.Controllers
         public ActionResult Forms()
         {
             UserInfo UserInfo_ = new UserInfo();
-           ApplicationUser user= db.Users.Find(User.Identity.GetUserId());
-            UserInfo_.UserId = user.Id;
+            ApplicationUser user= db.Users.Find(User.Identity.GetUserId());
+           
 
             return View(UserInfo_);
         }
@@ -27,11 +27,12 @@ namespace CvBuilder.Controllers
         public ActionResult Forms(UserInfo userInfo)
         {
             UserInfo UserInfo_ = new UserInfo();
-          
-            UserInfo_.FirstName = userInfo.FirstName;
+
+            UserInfo_.FirstName = userInfo.applicationUser.UserName;
             UserInfo_.LastName = userInfo.LastName;
-            UserInfo_.UserId = userInfo.UserId;
-            UserInfo_.Age = userInfo.Age;
+            
+          
+           
            
             db.UserInfo.Add(UserInfo_);
             db.SaveChanges();

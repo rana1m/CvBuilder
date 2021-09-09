@@ -10,13 +10,14 @@ namespace CvBuilder.Models
     {
        
         public int id { get; set; }
-
-        public String UserId { get; set; }
-        [ForeignKey("UserId")]
-        public virtual ApplicationUser applicationUser { get; set; }
+ 
         public String FirstName { get; set; }
         public String LastName { get; set; }
-        public int Age { get; set; }
+        public String BirthDate { get; set; }
+        public int PhoneNumber { get; set; }
+        public  ApplicationUser applicationUser { get; set; }
+        public ICollection<Education> Educations { get; set; }
+
 
     }
 }

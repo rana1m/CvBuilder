@@ -200,8 +200,21 @@
     <Compile Include="Migrations\202109082247423_editUserInfo.Designer.cs">
       <DependentUpon>202109082247423_editUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109082310017_AddEducation.cs" />
+    <Compile Include="Migrations\202109082310017_AddEducation.Designer.cs">
+      <DependentUpon>202109082310017_AddEducation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109082313547_AddEducation1.cs" />
+    <Compile Include="Migrations\202109082313547_AddEducation1.Designer.cs">
+      <DependentUpon>202109082313547_AddEducation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109090345008_fixPK.cs" />
+    <Compile Include="Migrations\202109090345008_fixPK.Designer.cs">
+      <DependentUpon>202109090345008_fixPK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Education.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -304,6 +317,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109082247423_editUserInfo.resx">
       <DependentUpon>202109082247423_editUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109082310017_AddEducation.resx">
+      <DependentUpon>202109082310017_AddEducation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109082313547_AddEducation1.resx">
+      <DependentUpon>202109082313547_AddEducation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109090345008_fixPK.resx">
+      <DependentUpon>202109090345008_fixPK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

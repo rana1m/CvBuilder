@@ -28,82 +28,67 @@
     <div class="wrapper wrapper-full-page ">
         <div class="full-page login-page ">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-            <div class="content" style=" padding-top: 85px; padding-bottom: 85px;">
+            <div class="content" style="">
+
+
+
+
                 <div class="container">
-                    <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-                        <section id="loginForm">
-                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                            {
-                                @Html.AntiForgeryToken()
+                    <div class="col-lg-6 col-md-6 ml-auto mr-auto">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card card-login card-white">
+                                <div class="card-header">
+                                    <img src="../../assets/img/card-primary.png" alt="" style=" height: 39%; width: 90%;">
+                                    <h1 class="card-title ml-1">Log in</h1>
+                                </div>
+                                <div class="card-body">
 
-                                <div class="card card-login card-white">
-                                    <div class="card-header">
-                                        <img src="../../assets/img/card-primary.png" alt="">
-                                        <h1 class="card-title m-2" style="font-size:50px;">Log in</h1>
-                                        <hr />
-                                       
-                                    </div>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger registerForm" })
 
-                                    <div class="card-body">
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger registerForm" })
-                                        <div class="form-group">
-                                            <i class="tim-icons icon-email-85 ml-4"></i>
+                    
+                                    <div class="form-group">
+                                            <i class="tim-icons icon-email-85"></i>
                                             @Html.LabelFor(m => m.Email, new { @class = "col-md-6 control-label" })
-                                            <div class="col-md-10">
+                                        
                                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger registerForm" })
-                                            </div>
+                                          
                                         </div>
 
                                         <div class="form-group ">
-                                            <i class="tim-icons icon-lock-circle  ml-4"></i>
+                                            <i class="tim-icons icon-lock-circle "></i>
                                             @Html.LabelFor(m => m.Password, new { @class = "col-md-6 control-label" })
-                                            <div class="col-md-10">
+                                          
                                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger registerForm" })
-                                            </div>
+                                           
                                         </div>
 
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <div class="checkbox">
-                                                @Html.CheckBoxFor(m => m.RememberMe)
-                                                @Html.LabelFor(m => m.RememberMe)
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-
-
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-12 ">
-                                                <input type="submit" value="Log in" class="btn btn-primary btn-lg btn-block mb-3" />
-                                            </div>
-                                        </div>
-
-                                        <div class="pull-left">
-
-                                            @Html.ActionLink("Create Account", "Register", new { @class = "link footer-link " })
-
-
-                                        </div>
-                                        <div class="pull-right">
-                                            @Html.ActionLink("Forgot password?", "ForgotPassword", new { @class = "link footer-link text-sm-left" })
-
-
-                                        </div>
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
                                     </div>
                                 </div>
-
-
-                            }
-                        </section>
-
-
-                    </div>
+                                <div class="card-footer">
+                                    <input type="submit" value="Log in" class="btn btn-primary btn-lg btn-block mb-3" />
+                                    <div class="pull-left">
+                                        <h6>
+                                            @Html.ActionLink("Create Account", "Register", new { @class = "link footer-link " })
+                                        </h6>
+                                    </div>
+                                    <div class="pull-right">
+                                        <h6>
+                                            @Html.ActionLink("Forgot password?", "ForgotPassword", new { @class = "link footer-link text-sm-left" })
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        </div>
                 </div>
+
             </div>
         </div>
     </div>

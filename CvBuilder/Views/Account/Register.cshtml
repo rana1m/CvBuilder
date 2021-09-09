@@ -54,22 +54,24 @@
                         <div class="col-md-7 mr-auto">
                             <div class="card card-register card-white">
                                 <div class="card-header">
-                                    <img class="card-img" style=" padding-top: 20px; " src="../../assets/img/card-primary.png" alt="Card image">
+                                    <img class="card-img" style=" height:50%; width:100%;" src="../../assets/img/card-primary.png" alt="Card image">
                                     <h4 class="card-title ml-2">Register</h4>
                                 </div>
                                 <div class="card-body">
                                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal form", role = "form" }))
                                     {
                                         @Html.AntiForgeryToken()
+
                                         <h4 class="text-default">Create a new account.</h4>
+
                                         <hr />
+                                        @Html.ValidationSummary("", new { @class = "text-danger registerForm" })
                                         <div class="form-group">
                                             @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
                                             <div class="col-md-10">
                                                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                                             </div>
                                         </div>
-                                        @Html.ValidationSummary("", new { @class = "text-danger registerForm" })
 
                                         <div class="form-group">
                                             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -78,21 +80,21 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                            @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
                                             <div class="col-md-10">
                                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-3 control-label" })
+                                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-8 control-label" })
                                             <div class="col-md-10">
                                                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group card-footer">
-                                            <div class="col-md-offset-2 col-md-10">
+                                            <div class="col-md-offset-2 col-md-12 text-center">
 
-                                                <input type="submit" class="btn btn-primary btn-round btn-lg" value="Register" />
+                                                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Register" />
                                             </div>
                                         </div>
                                     }
