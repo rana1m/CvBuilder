@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -114,12 +120,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EducationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -212,9 +213,42 @@
     <Compile Include="Migrations\202109090345008_fixPK.Designer.cs">
       <DependentUpon>202109090345008_fixPK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109102245023_updatePhoneType.cs" />
+    <Compile Include="Migrations\202109102245023_updatePhoneType.Designer.cs">
+      <DependentUpon>202109102245023_updatePhoneType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120309270_changeEducationDateType.cs" />
+    <Compile Include="Migrations\202109120309270_changeEducationDateType.Designer.cs">
+      <DependentUpon>202109120309270_changeEducationDateType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120424004_editUserInfo1.cs" />
+    <Compile Include="Migrations\202109120424004_editUserInfo1.Designer.cs">
+      <DependentUpon>202109120424004_editUserInfo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120542133_editUserInfo2.cs" />
+    <Compile Include="Migrations\202109120542133_editUserInfo2.Designer.cs">
+      <DependentUpon>202109120542133_editUserInfo2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120707220_updateBirthDateTypeOnUserInfo.cs" />
+    <Compile Include="Migrations\202109120707220_updateBirthDateTypeOnUserInfo.Designer.cs">
+      <DependentUpon>202109120707220_updateBirthDateTypeOnUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120908561_addSummaryToUser.cs" />
+    <Compile Include="Migrations\202109120908561_addSummaryToUser.Designer.cs">
+      <DependentUpon>202109120908561_addSummaryToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109121814191_addExperience.cs" />
+    <Compile Include="Migrations\202109121814191_addExperience.Designer.cs">
+      <DependentUpon>202109121814191_addExperience.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109121817037_linkExpierenceWithUser.cs" />
+    <Compile Include="Migrations\202109121817037_linkExpierenceWithUser.Designer.cs">
+      <DependentUpon>202109121817037_linkExpierenceWithUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Education.cs" />
+    <Compile Include="Models\Experiences.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -278,7 +312,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\Forms.cshtml" />
+    <Content Include="Views\User\PersonalInfo.cshtml" />
+    <Content Include="Views\User\AddEducation.cshtml" />
+    <Content Include="Views\User\ShowEducations.cshtml" />
+    <Content Include="Views\Educations\Create.cshtml" />
+    <Content Include="Views\Educations\Delete.cshtml" />
+    <Content Include="Views\Educations\Details.cshtml" />
+    <Content Include="Views\Educations\Edit.cshtml" />
+    <Content Include="Views\Educations\Index.cshtml" />
+    <Content Include="Views\User\DeleteEducation.cshtml" />
+    <Content Include="Views\User\EditEducation.cshtml" />
+    <Content Include="Views\User\ShowExperiences.cshtml" />
+    <Content Include="Views\User\AddExperiences.cshtml" />
+    <Content Include="Views\User\EditExperiences.cshtml" />
+    <Content Include="Views\User\DeleteExperiences.cshtml" />
+    <Content Include="Views\User\ShowCv.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +374,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109090345008_fixPK.resx">
       <DependentUpon>202109090345008_fixPK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109102245023_updatePhoneType.resx">
+      <DependentUpon>202109102245023_updatePhoneType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120309270_changeEducationDateType.resx">
+      <DependentUpon>202109120309270_changeEducationDateType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120424004_editUserInfo1.resx">
+      <DependentUpon>202109120424004_editUserInfo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120542133_editUserInfo2.resx">
+      <DependentUpon>202109120542133_editUserInfo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120707220_updateBirthDateTypeOnUserInfo.resx">
+      <DependentUpon>202109120707220_updateBirthDateTypeOnUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120908561_addSummaryToUser.resx">
+      <DependentUpon>202109120908561_addSummaryToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109121814191_addExperience.resx">
+      <DependentUpon>202109121814191_addExperience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109121817037_linkExpierenceWithUser.resx">
+      <DependentUpon>202109121817037_linkExpierenceWithUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

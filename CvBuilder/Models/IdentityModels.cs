@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -21,6 +23,8 @@ namespace CvBuilder.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<UserInfo> UserInfo{ get; set; }
+        public DbSet<Education> Educations{ get; set; }
+        public DbSet<Experiences> Experiences{ get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,6 +33,11 @@ namespace CvBuilder.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        internal void Refresh(RefreshMode clientWins, object yourentity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

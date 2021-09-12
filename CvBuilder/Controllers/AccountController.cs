@@ -82,7 +82,7 @@ namespace CvBuilder.Controllers
             {
                 case SignInStatus.Success:
                     //return RedirectToLocal(returnUrl);
-                   return RedirectToAction("Forms", "User");
+                   return RedirectToAction("PersonalInfo", "User");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

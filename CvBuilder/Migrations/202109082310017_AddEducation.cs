@@ -13,8 +13,8 @@ namespace CvBuilder.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        StartDate = c.String(),
-                        EndDate = c.String(),
+                        StartDate = c.String(nullable:true),
+                        EndDate = c.String(nullable: true),
                         Specialty = c.String(),
                         User_Id = c.Int(nullable: false),
                         userInfo_id = c.Int(),
